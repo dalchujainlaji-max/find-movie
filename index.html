@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>到处捡垃圾的片单</title>
+    <link rel="stylesheet" href="./styles.css?v=2" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">到处捡垃圾的片单</p>
+        <h1>今天看什么！</h1>
+      </div>
+      <button class="icon-button" id="openAdd" type="button" aria-label="新增片目" title="新增片目">+</button>
+    </header>
+
+    <main>
+      <section class="today-panel" aria-label="今天看什么">
+        <div class="today-copy">
+          <p class="section-label">今晚随机捡一部</p>
+          <h2 id="todayTitle">加载中</h2>
+          <p id="todayMeta"></p>
+        </div>
+        <div class="today-actions">
+          <button class="primary-button" id="shufflePick" type="button">换一部</button>
+          <button class="ghost-button" id="openTodayDetail" type="button">看看详情</button>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="筛选">
+        <label class="search-box">
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="片名 / 国家 / 备注" />
+        </label>
+        <div class="segmented" role="group" aria-label="作品范围">
+          <button class="segmented-button active" data-filter="all" type="button">全部</button>
+          <button class="segmented-button" data-filter="recommended" type="button">我推荐</button>
+        </div>
+      </section>
+
+      <section class="genre-strip" aria-label="类型分类">
+        <button class="genre-chip active" data-genre="全部" type="button">全部</button>
+      </section>
+
+      <section class="list-head">
+        <div>
+          <p class="section-label">片单</p>
+          <h2 id="listTitle">全部作品</h2>
+        </div>
+        <p id="resultCount"></p>
+      </section>
+
+      <section class="movie-list" id="movieList" aria-label="作品列表"></section>
+    </main>
+
+    <dialog class="detail-dialog" id="detailDialog">
+      <button class="dialog-close" id="closeDetail" type="button" aria-label="关闭">×</button>
+      <div id="detailContent"></div>
+    </dialog>
+
+    <dialog class="add-dialog" id="addDialog">
+      <button class="dialog-close" id="closeAdd" type="button" aria-label="关闭">×</button>
+      <form id="addForm" class="add-form">
+        <div>
+          <p class="section-label">持续补充片单</p>
+          <h2>我今天看了</h2>
+        </div>
+        <label>
+          <span>片名</span>
+          <input name="title" required placeholder="比如：花样年华" />
+        </label>
+        <label>
+          <span>观看日期</span>
+          <input name="watchDate" type="date" />
+        </label>
+        <div class="form-grid">
+          <label>
+            <span>电影 / 电视剧</span>
+            <select name="mediaType">
+              <option>电影</option>
+              <option>电视剧</option>
+              <option>纪录片</option>
+              <option>动画</option>
+              <option>短片</option>
+            </select>
+          </label>
+          <label>
+            <span>年份</span>
+            <input name="year" inputmode="numeric" placeholder="2024" />
+          </label>
+        </div>
+        <label>
+          <span>国家地区</span>
+          <input name="country" placeholder="日本 / 韩国 / 美国" />
+        </label>
+        <label>
+          <span>类型</span>
+          <select name="genre"></select>
+        </label>
+        <label>
+          <span>我的评语</span>
+          <textarea name="note" rows="3" placeholder="一句你想留给这部片的话"></textarea>
+        </label>
+        <label class="checkbox-row">
+          <input name="recommended" type="checkbox" />
+          <span>这是我推荐的</span>
+        </label>
+        <p class="form-note">新增内容会先保存在这个浏览器里。之后接后台时，可以把这里改成真正的管理入口。</p>
+        <button class="primary-button" type="submit">保存到片单</button>
+      </form>
+    </dialog>
+
+    <script src="./app.js?v=2"></script>
+  </body>
+</html>
